@@ -1,0 +1,437 @@
+@import "globals"; 
+
+$label_width: 110px;
+$label_margin: 10px; 
+
+.simple_form {
+  font-size: 12px;
+  line-height: 17px;
+  
+  h3 {
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+    margin: 0 0 7px 0;
+    padding-top: 20px;
+    color: $form_header_color;
+    &:first-child { padding-top: 0px; }
+  }
+  
+  // Links with warning style (archive link)
+  // ----------------------------------------
+  div.danger_zone {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    padding: 8px 0;
+
+    .hint {
+      line-height: 17px;
+      color: #888;
+      font-style: italic;
+      margin-left: 5px;
+    }
+
+    a.danger {
+      color: #C7132A;
+      text-decoration: underline;
+      padding: 2px 5px;
+  
+      &:hover { text-decoration: none; background-color: #C7132A; color: white;}
+    }
+  }
+
+  // Error message that appears at top of the form
+  // ----------------------------------------
+  .alert-error {
+    color: $warning_red;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  // Divider
+  // ----------------------------------------
+  hr {
+    margin: -1px 0 10px;
+    background: $form_divider_color;
+    color: $form_divider_color;
+  }
+
+  // Note
+  // ----------------------------------------
+  div.form_note {
+    border: 1px solid #D9DD70;
+    background-color: #F1F0B1;
+    color: #666;
+    padding: 4px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px 30px 15px 30px;
+  }
+
+  // Actions. Submit button, etc
+  // ----------------------------------------
+  div.actions {
+    margin: 5px 0 10px $label_width + $label_margin;
+    &.tight { margin: 0 0 0 $label_width + $label_margin; }
+
+    .cancel { width: 86px; text-align: center; }
+    input[type=submit] {
+      padding-left: 20px;   // matches extra padding in cancel button
+      padding-right: 20px;
+      min-width: 86px;
+    }
+  }
+
+  // left align items with input fields
+  .field_align { margin-left: $label_width + $label_margin; }
+
+  // Inputs
+  // ----------------------------------------
+  div.inputs {
+
+    // Wrapper
+    // ----------------------------------------
+    div.input {
+      @include close_over_floated_elements;
+      padding-bottom: 10px;
+      clear: both;            // make sure each group starts on its own line
+
+      // Adjustments for spacing below the field
+      &.tighten { padding-bottom: 7px; }
+      &.tighter { padding-bottom: 4px; }
+      &.tightest { padding-bottom: 0px; }
+      &.looser { padding-bottom: 14px; }
+      
+      // adjust label margins for various field types
+      &.bigtext > .control-label { line-height: 32px; }
+      &.medtext > .control-label { line-height: 26px; }
+      &.bigtext.hint_right .hint { position: relative; top: -2px; }
+      &.medtext.hint_right .hint { position: relative; top: -2px; }
+      &.select > .control-label, &.date > .control-label { line-height: 20px; }
+      &.check_boxes > .control-label, &.radio_buttons > .control-label { line-height: 20px; }
+      &.check_boxes.hint_right .hint, &.radio_buttons.hint_right .hint { margin-left: 0px; }
+      &.static > .control-label { line-height: 16px; }
+      &.bubble_group > .control-label { line-height: 22px; }
+
+      // alternate input sizes
+      &.medtext { input[type=text], input[type=email], input[type=password], textarea { font-size: 15px; } }
+      &.bigtext { input[type=text], input[type=email], input[type=password], textarea { font-size: 18px; } }
+      
+      input[type=checkbox], input[type=radio] {
+        margin-right: 5px;
+        margin-left: 2px;   // so radio buttons aren't clipped on left side
+      }
+
+      input[type=checkbox] {
+        position: relative;
+        top: -1px;          // raise checkboxes so they align with text
+      }
+
+      // Fields with errors
+      // ----------------------------------------
+      &.field_with_errors {
+        input[type=text], input[type=email], input[type=password], input[type=file], textarea, select {
+          border-color: $input_error_border_color !important;
+          background-color: $input_error_background_color;
+        }
+        label.radio, label.checkbox {   // inline radio and checkbox labels
+          background-color: $input_error_background_color;
+          padding: 1px 8px 0 8px;
+        }
+
+        // place error message text just below input
+        .error {
+          line-height: 17px;
+          clear: left;
+          color: $warning_red;
+          margin: 3px 0 0 $label_width + $label_margin + 2px;
+        }
+        
+        // tighten hint bottom margin when error text is present
+        .hint { margin-bottom: -4px; }
+      }
+    }
+
+    // Control Labels
+    // ----------------------------------------
+    
+    label {
+      color: $form_label_color;
+      &.checkbox { color: $default_text_color; }  // for inline checkbox labels
+    }
+    
+    .control-label {
+      float: left;
+      width: $label_width; 
+      text-align: right;
+      margin: 0 $label_margin 0 0;
+      font-size: 12px;
+      line-height: 24px;
+      
+      // label for required items
+      &.required { font-weight: bold; }
+
+      // remove dotted underline on required field "*"
+      abbr { border: none; }
+    }
+
+    // Hint
+    // ----------------------------------------
+    .hint {
+      color: $form_hint_color;
+      margin: 3px 0 0 $label_width + $label_margin + 2px;
+      a { font-style: normal; }
+    }
+    // hint_right sits on right side of controls
+    div.input.hint_right .hint { display: inline; margin-left: 14px; }
+    // hint that's just a link (for login form)
+    a.hint { font-style: normal; color: $link_color }
+
+    input[type=text], input[type=email], input[type=password], textarea {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      border: 1px solid $input_border_color;
+      margin: 0px;
+      padding: 4px 5px;
+      outline: none;
+      border-radius: 3px;
+    }
+
+    textarea {
+      overflow: hidden;         // hide scrollbar by default in IE8
+      vertical-align: bottom;   // remove margin below textarea in webkit
+    }
+
+    input.file {
+      padding: 0px;
+      margin: 2px 0px;
+      border: none;
+    }
+
+    // field widths
+    input[type=text], input[type=email], input[type=password], textarea { width: 277px; } // default input width
+    input[type=text], input[type=email], input[type=password], textarea {
+      &.width-1 { width: 31px; }
+      &.width-2 { width: 72px; }
+      &.width-3 { width: 113px; }
+      &.width-4 { width: 154px; }
+      &.width-5 { width: 196px; }
+      &.width-6 { width: 236px; }
+      &.width-7 { width: 277px; }
+      &.width-8 { width: 318px; }
+      &.width-9 { width: 359px; }
+      &.width-10 { width: 400px; }
+      &.width-11 { width: 441px; }
+      &.width-12 { width: 482px; }
+      &.width-13 { width: 523px; }
+      &.width-14 { width: 564px; }
+      &.width-15 { width: 605px; }
+      &.width-16 { width: 646px; }
+      &.width-17 { width: 687px; }
+      &.width-18 { width: 728px; }
+      &.width-19 { width: 769px; }
+      &.width-auto { width: auto; }
+      &.width-date { width: 79px; }
+    }
+
+    input:focus, textarea:focus, input.focus, select:focus {    // (re input.focus see typeahead_fixes.js)
+      border-color: $input_highlight_color !important;
+      box-shadow: 0 0 5px #999999;
+      background-color: $input_highlight_background;
+    }
+
+    // Form Bubbles
+    // --------------------------------------------------------------------------------------
+    div.input.bubble_group {
+      .controls {
+        float: left;
+      
+        div.bubble {
+          padding: 2px 2px 2px 12px;
+          margin-bottom: 4px;
+          background-color: #ddd;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          color: #333;
+          line-height: 16px;
+
+          img.delete { float: right; }
+        }
+        // top margin for "add" button if there are bubbles above it.
+        > a.smart_top_margin:not(:first-child) { margin-top: 5px; };
+      }
+    }
+
+    // A single div.controls block with multiple inline inputs that share a single error and hint
+    // --------------------------------------------------------------------------------------
+    div.input.inline_fields {
+      .controls {
+        float: left;
+        
+        > input[type=checkbox], input[type=text], input[type=email], input[type=password], textarea, select, label, button {
+          margin-right: 5px;
+          &:last-child { margin-right: 0px; }
+        }
+        > input[type=submit] { float: right; }
+        label {
+          display: inline-block;
+          text-align: right;
+        }
+        .hint { margin-left: 2px; }
+        .error { margin-left: 2px; }
+      }
+    }
+
+    // Mutliple control blocks, each with their own error and hint, positioned in a single row
+    // ---------------------------------------------------------------------------------------
+    div.input_row {
+      clear: both;
+      
+      div.input {
+        float: left;
+        clear: none;
+        margin-left: 10px;
+        &:first-child { margin-left: 0px; }
+      }
+    }
+
+    // Association rendered as checkboxes, or radio buttons
+    // --------------------------------------------------------------------------------------
+    div.input.check_boxes, div.input.radio_buttons {
+      .controls {               // - controls div will sit next to label and fill available space
+        overflow: auto;         // - trick to allow controls div to grow to fill remaining width
+        float: none;            //   without dropping to line below the label
+
+        label {                 // - checkboxes + labels will float inside control div
+          float: left;          //   and form as many columns as the width allows
+          text-align: left;
+          width: 170px;
+          margin: 2px 0px 2px 0;
+        }
+      }
+      &.wider_columns {
+        .controls {
+          label { width: 210px }
+        }
+      }
+      &.auto_width {
+        .controls label { width: auto; margin-right: 10px }
+      }
+    }
+  }
+}
+
+// overlay transparent file input over div styled like button
+.file_button {
+  position: relative;
+  overflow: hidden;
+
+  input[type=file] {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 40px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+  }
+}
+
+// Windows-specific fixes
+.agent_windows {
+  .simple_form {
+    div.inputs {
+      // move all labels down 1px (we can't align labels with line-height alone in Windows)
+      .control-label { position: relative; top: 1px; }
+      div.input {
+        // fix vertical position labels
+        &.bigtext > .control-label { line-height: 30px; }
+        &.select > .control-label, &.date > .control-label { line-height: 24px }
+        &.static > .control-label { line-height: 14px; }
+        &.medtext.hint_right .hint { top: -1px; }
+        // fix checkbox alignment
+        input[type=checkbox], input[type=radio] {
+          position: relative;
+          top: 2px !important;  // lower checkboxes so they align with text
+        }
+      }
+    }
+  }
+}
+
+// Firefox Windows-specific fixes
+.agent_firefox.agent_windows {
+  .simple_form {
+    div.inputs {
+      div.input {
+        &.select > .control-label, &.date > .control-label { line-height: 22px }
+        &.bubble_group > .control-label { line-height: 20px; }
+      }
+    }
+  }
+}
+
+// Chrome Windows-specific fixes
+.agent_chrome.agent_windows {
+  .simple_form {
+    div.inputs {
+      div.input {
+        &.select > .control-label, &.date > .control-label { line-height: 24px }
+        &.bubble_group > .control-label { line-height: 20px; }
+      }
+    }
+  }
+}
+
+// IE10+ specific fixes
+.agent_ie, {
+  .simple_form {
+    div.inputs {
+      // (Undo move all labels down 1px - from .agent_windows above)
+      .control-label { position: relative; top: 0px; }
+      div.input {
+        &.static > .control-label { line-height: 16px; }
+      }
+    }
+  }
+}
+
+// IE8 specific fixes
+.agent_ie.agent_ie8, {
+  .simple_form {
+    div.actions {
+      input[type=submit] { min-width: 46px; }   // IE8 button min-width doesn't include padding
+    }
+    div.inputs {
+      .control-label { position: relative; top: 1px; }
+      div.input {
+        &.select > .control-label, &.date > .control-label { line-height: 22px }
+        &.static > .control-label { line-height: 16px; }
+        &.bubble_group > .control-label { line-height: 20px; }
+      }
+    }
+  }
+}
+
+// Chrome Mac-specific fixes
+.agent_chrome.agent_mac {
+  .simple_form {
+    div.inputs {
+      div.input {
+        &.select > .control-label, &.date > .control-label { line-height: 22px }
+      }
+    }
+  }
+}
+
+// Firefox Mac-specific fixes
+.agent_firefox.agent_mac {
+  .simple_form {
+    div.inputs {
+      div.input {
+        &.select > .control-label, &.date > .control-label { line-height: 24px }
+      }
+    }
+  }
+}
+

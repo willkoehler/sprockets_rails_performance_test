@@ -1,0 +1,86 @@
+// Layout
+// ----------------------------------------
+$page_width: 830px;
+$page_margin: 30px;
+$content_width: $page_width - 2 * $page_margin;
+$nav_spacing: 10px;
+$small_space: 16px;
+$button_gutter: 6px;   // space between buttons
+// grid
+$column_width: 31px;
+$gutter: 10px;
+$total_columns: 19;
+
+// Colors
+// ----------------------------------------
+$pleasant_blue: #64ABCA;
+$warning_red: #B30000;
+$page_background_color: #FFFFFF;
+// Header
+$header_background_color: #413D31;
+$header_text_color: #AAA;
+$header_bright_text_color: #E2E2E2;
+$header_logo_text_color: #D7D7D7;
+// Text
+$default_text_color: #333333;
+$lighten_bold_text_color: #535353;
+$light_text_color: #AAA;
+$very_light_text_color: #dddddd;
+$alert_text_color: $warning_red;
+$success_text_color: #007A00;
+$link_color: #038FCC;
+$active_goal_text_color: #00882B;
+// Borders and tables
+$table_header_color: #DDD;
+$table_background_color: #F2F2F2;
+$border_color: #DDD;
+$background_highlight_blue: #DFECF6;
+$background_highlight_green: #D6F0CA;
+// Forms
+$input_border_color: #AAA;
+$input_highlight_color: #058CF5;
+$input_highlight_background: #F2F8FB;
+$input_error_border_color: #F30000;
+$input_error_background_color: #FFDBDC;
+$input_placeholder_color: #AAA;
+$form_header_color: #555;
+$form_label_color: #666;
+$form_hint_color: #888;
+$form_divider_color: $border_color;
+// Flash messages
+$flash_info_text_color: #14375D;
+$flash_info_background_color: #EAF6F8;
+$flash_info_border_color: #92CAE4;
+$flash_alert_text_color: #CD0000;
+$flash_alert_background_color: #E4DBD4;
+$flash_alert_border_color: #F1E3E6;
+// Navigation
+$nav_text_color: #CCC;
+$nav_background_color: #5E5848;
+$nav_highlight_text_color: #FFF;
+$nav_highlight_background_color: $pleasant_blue;
+$nav_badge_text_color: #DDD;
+$nav_badge_background_color: #857856;
+$nav_badge_warn_background_color: #C7132A;
+$nav_highlight_badge_background_color: #0074C3;
+$subnav_text_color: #333;
+$subnav_background_color: #DDDEE0;
+$subnav_highlight_text_color: #FFF;
+$subnav_highlight_background_color: #53585F;
+
+// expand div to close around internal elements without using overflow:hidden
+@mixin close_over_floated_elements {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow:hidden;
+  }
+}
+
+@mixin thinner_font {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

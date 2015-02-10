@@ -1,0 +1,36 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+en:
+  devise:
+    failure:
+      already_authenticated: "You must sign out before logging in or resetting your password"
+      invalid: "Invalid email or password."
+      not_found_in_database: "Invalid email or password."
+      timeout: "Your session expired. Please sign in again to continue."
+      unauthenticated: "You must login to access this page."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        subject: "Reset password instructions"
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
+      success: "Successfully authenticated from %{kind} account."
+    password_resets:
+      no_token: "Password reset token is missing. Make sure you copy the full link form the email."
+      invalid_token: "Your password reset has expired. You must request another password reset."
+      send_instructions: "Check your email for password reset instructions."
+      updated: "Your password was successfully updated."
+    sessions:
+      signed_in: ""   # blank string disables the "signed in" flash message
+      signed_out: "You have been signed out."
+      timeout_js: "You've been idle for %{minutes} minutes. Please sign in again."
+  errors:
+    messages:
+      expired: "has expired, please request a new one"
+      not_found: "we didn't find an account with this email"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

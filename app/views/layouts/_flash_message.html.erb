@@ -1,0 +1,14 @@
+<% unless @disable_header_flash %>
+  <% flash.each do |key, value|  %>
+  <div class="header_bar flash_message">
+    <div class="container">
+      <div class="wrapper">
+        <span class="flash <%= key %>"><%= value %></span>
+      </div>
+      <div class='menu'>
+        <%= render 'layouts/header_links' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

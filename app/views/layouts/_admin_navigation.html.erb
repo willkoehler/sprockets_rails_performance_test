@@ -1,0 +1,8 @@
+<div class='text-center'>
+  <div class='subnav admin'>
+    <%= link_to 'Users', users_path, class: (:active if selected==:users) %>
+    <%= link_to 'Hospital Categories', categories_path, class: (:active if selected==:categories) %>
+    <%= link_to 'Ops Audit Standards', ops_audit_standards_path, class: (:active if selected==:ops_audit) %>
+    <%= link_to 'Archived Items', archived_users_path, class: (:active if selected==:archived_items) %>
+  </div>
+</div>

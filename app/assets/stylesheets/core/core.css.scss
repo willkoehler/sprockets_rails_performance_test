@@ -1,0 +1,90 @@
+//= depend_on_asset "background.png"
+@import "globals";
+
+// Use border-box sizing for everything.
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;    
+  box-sizing: border-box;
+}
+
+body {
+  background: #706B5B image-url('background.png') repeat;
+}
+
+div.fixed_width {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+div.centered {
+  float: none;
+  margin: 0 auto;
+}
+
+// Use to style divs that will fade into view
+.revealable {
+  display: none;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+// lighten color of placeholder text
+::-webkit-input-placeholder { color: $input_placeholder_color; }
+::-moz-placeholder { color: darken($input_placeholder_color,20%); }   // Firefox placeholders render lighter for some reason
+:-ms-input-placeholder { color: $input_placeholder_color !important; }
+
+// Used by jquery.placeholder.js to emulate the placeholder attribute
+input.placeholder, textarea.placeholder { color: $input_placeholder_color !important; }
+
+// Page Body
+// --------------------------------------------------
+.page {
+  margin: 0 auto;
+  width: $page_width;
+  background-color: $page_background_color;
+  padding: 25px $page_margin 15px $page_margin;
+  margin-bottom: 30px;
+  border-radius: 5px;
+
+  .content {
+    min-height: 550px;
+    @include close_over_floated_elements;   // (overflow: hidden breaks disaplay: sticky)
+
+    .content_head {
+      background-color: #fff;
+      margin-bottom: 15px;
+
+      h1 { margin-bottom: 6px; }
+      h2 { margin-bottom: 3px; }
+      .instructions { font-size: 13px; line-height: 18px;}
+      @include close_over_floated_elements;   // (overflow: hidden breaks disaplay: sticky)
+    }
+  }
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+// Clear floats without extra markup
+.clearfix { @include close_over_floated_elements; }
+
+// Force Firefox to display image placeholders for broken images instead of alt text
+@-moz-document url-prefix(http), url-prefix(file) {
+  img:-moz-broken {
+    -moz-force-broken-image-icon:1;
+    width:24px;
+    height:24px;
+  }
+}

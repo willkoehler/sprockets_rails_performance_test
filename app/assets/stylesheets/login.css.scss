@@ -1,0 +1,27 @@
+@import "core/globals";
+
+.pages, .sessions {   // login form may appear on home page or on /login page
+
+  .login_box {
+    padding: 0px;
+    margin: 0 auto 20px auto;
+    background: #E7E7E7;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px #999;
+    width: 450px;
+    .title {
+      background: #DEDEDE;
+      padding: 2px 20px 5px 25px;
+      font-size: 17px;
+      line-height: 25px;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px #FFF;
+      border-radius: 5px 5px 0px 0px;
+    }
+    .body {
+      padding:20px 0px 20px 0;
+      overflow: hidden;
+    }
+  }
+}

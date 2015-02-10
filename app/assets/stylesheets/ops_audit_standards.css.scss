@@ -1,0 +1,105 @@
+//= depend_on_asset "sort_grip.png"
+@import "core/globals";
+
+.ops_audit_standards.index {
+
+  .filters {
+    padding: 0 0 10px 0;
+    border-bottom: 3px solid $border_color;
+    text-align: center;
+  }
+  
+  .ops_audit_standard {
+    overflow: hidden;
+    padding: 15px 0;
+    border-bottom: 3px solid $border_color;
+    background: #FFF;
+    
+    .column {
+      float: left;
+
+      &.left {
+        width: 60px;
+        .grip {
+          // grip area is larger than the actual image
+          margin: -7px auto 0 auto;
+          height: 30px;
+          width: 37px;
+          background: image-url('sort_grip.png') no-repeat 10px 10px;
+          cursor: move;
+        }
+      }
+
+      &.middle {
+        width: 625px;
+        .summary {
+          font-weight: bold;
+          font-size: 14px;
+          color: $lighten_bold_text_color;
+        }
+      }
+
+      &.right {
+        width: 85px;
+        text-align: right;
+        padding-right: 5px;
+      
+        input[type=submit] { width: 60px; margin-bottom: 5px; text-align: center; padding-left: 0; padding-right: 0; }
+        .button { text-align: center; width: 61px; }
+      }
+    }
+    
+    form {
+      input[type=text], textarea {
+        border-radius: 0px;
+        border-color: $border_color;
+        &.summary {
+          width: 100%;
+          position: relative;
+          &.option { font-weight: normal; }
+        }
+        &.details {
+          width: 100%;
+          position: relative;
+          top: -1px;
+        }
+        // pull focused input to front to prevent border highlight from being clipped
+        &:focus { z-index: 2; }
+      }
+      input[disabled], textarea[disabled] {
+        cursor: default;
+        opacity: .5;
+        filter: alpha(opacity=50);
+      }
+      .level {
+        overflow: hidden;
+        margin-top: 10px;
+        
+        .f_column {
+          float: left;
+          
+          &.left { width: 60px; padding-top: 6px; text-align: center; }
+          
+          &.middle { width: 480px; }
+          
+          &.right { width: 85px; padding-top: 6px; text-align: center; color: $light_text_color; }
+          
+        }
+      }
+      .category_and_archive {
+        margin-top: 15px;
+        padding: 15px 0 0 45px;
+        border-top: 1px solid $border_color;
+      }
+    }
+
+    &#inline_form_new { border-bottom: none; }
+
+    &.archived {
+      background-color: #F8F8F8;
+      .column.middle .summary {
+        color: $very_light_text_color;
+      }
+    }
+  }
+}

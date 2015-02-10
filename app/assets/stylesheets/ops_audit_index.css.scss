@@ -1,0 +1,80 @@
+@import "core/globals";
+
+.ops_audit_audits.index {
+  table {
+    background: none;
+    width: 635px;
+    margin: 0 auto 20px auto;
+    
+    tr.top {
+      td {
+        position: relative;
+        padding: 0 0 3px 0;
+        border: none;
+        color: $lighten_bold_text_color;
+      }
+      &.title {
+        td {
+          font-size: 18px;
+          line-height: 20px;
+          font-weight: bold;
+          padding: 0 0 3px 0;
+          .vs {
+            font-size: 12px;
+            font-weight: normal;
+            position: absolute;
+            right: -14px;
+            top: 2px;
+            z-index: 1;
+          }
+        }
+      }
+      &.spacer td { line-height: 0; height: 5px; }
+    }
+    th {
+      text-align: center;
+      padding: 12px 0 5px 0;
+      &.snd_row {
+        padding: 6px 0;
+        text-transform: none;
+      }
+    }
+    td {
+      text-align: center;
+    }
+    th.spacer, td.spacer {
+      padding: 0;
+      width: 10px;
+      border: none;
+      background: white;
+    }
+    td.value {
+      width: 55px;
+      padding: 12px 0;
+      font-size: 19px;
+      line-height: 23px;
+      background: #F9F9F9;
+      .counts { font-size: 11px; line-height: 13px; color: $light_text_color; }
+    }
+    td.label {
+      width: 240px;
+      text-align: left;
+      font-size: 14px;
+    }
+    tr.driver {
+      .label {
+        font-weight: bold;
+        color: $lighten_bold_text_color;
+        cursor: pointer;
+        &:before { content: "\25ba"; }
+      }
+      &.expanded .label:before { content: "\25bc"; }
+    }
+    tr.category {
+      display: none;
+      .label {
+        padding-left: 40px;
+      }
+    }
+  }
+}

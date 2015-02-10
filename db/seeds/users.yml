@@ -1,0 +1,10 @@
+--- 
+user1:
+  id: 1
+  name: Sprokets Tester
+  email: sprockets@test.com
+  password: password
+  password_confirmation: password
+  role: admin
+  must_change_pw: false
+  archived: false

@@ -1,0 +1,267 @@
+//= depend_on_asset "glyphicons_halflings.png"
+//= depend_on_asset "glyphicons_halflings_white.png"
+@import "globals";
+
+@mixin button_colors($color, $bg1, $bg2, $border, $text, $bg1_hv, $bg2_hv, $border_hv, $text_hv)
+{
+  &#{$color}, &#{$color}:link, &#{$color}:visited {
+    background: -webkit-linear-gradient( top, $bg1, $bg2 );
+    background: -moz-linear-gradient( top, $bg1, $bg2 );
+    background: -ms-linear-gradient( top, $bg1, $bg2 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$bg1}', endColorstr='#{$bg2}');
+    background-color: $bg1;
+    border-color: $border;
+    color: $text;
+  }
+  &#{$color}:hover {
+    background: -webkit-linear-gradient( top, $bg1_hv, $bg2_hv );
+    background: -moz-linear-gradient( top, $bg1_hv, $bg2_hv ) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient( top, $bg1_hv, $bg2_hv ) repeat scroll 0 0 transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$bg1_hv}', endColorstr='#{$bg2_hv}');
+    background-color: $bg1_hv;
+    border-color: $border_hv;
+    color: $text_hv;
+  }
+  &#{$color}:active {
+    background: -webkit-linear-gradient( top, $bg2_hv, $bg1_hv );
+    background: -moz-linear-gradient( top, $bg2_hv, $bg1_hv ) repeat scroll 0 0 transparent;
+    background: -ms-linear-gradient( top, $bg2_hv, $bg1_hv ) repeat scroll 0 0 transparent;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$bg2_hv}', endColorstr='#{$bg1_hv}');
+    background-color: $bg2_hv;
+    border-color: $border_hv;
+    color: $text_hv;
+  }
+}
+
+// SCSS doesn't support concatenating the parent selector with element selector (input[disabled]&)
+input[disabled].button, .button.disabled {
+  background: -webkit-linear-gradient( top, #ededed, #c2bec2 ) !important;
+  background: -moz-linear-gradient( top, #ededed, #c2bec2 ) repeat scroll 0 0 transparent !important;
+  background: -ms-linear-gradient( top, #ededed, #c2bec2 ) repeat scroll 0 0 transparent !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#c2bec2') !important;
+  background-color: #ededed !important;
+  border-color: #bababa !important;
+  color: #999 !important;
+  cursor: default;
+  pointer-events: none;       // block click events on <a> elements (not supported in IE)
+}
+
+.button {
+  border-radius: 3px;
+  border: 1px solid black;
+  display: inline-block;
+  font: 11px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  line-height: 16px;   /* Firefox */
+  padding: 4px 12px;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  // icons
+  &.icon {
+    &:before {
+      content: "";
+      position: relative; 
+      top: 1px; 
+      float:left;
+      width: 14px; 
+      height: 14px; 
+      margin: 0 6px 0 -2px;
+      background: image-url('glyphicons_halflings.png') 0 0 no-repeat;
+    }
+    &.white-icon:before, &:hover:before, &:active:before {
+      background-image: image-url('glyphicons_halflings_white.png');
+    }
+    &.silver:hover:before, &.silver:active:before {
+      background-image: image-url('glyphicons_halflings.png');
+    }
+    &.right-icon:before { float:right; margin: 0 -3px 0 5px; }
+    
+    &.glass:before { background-position: 0 0; }
+    &.music:before { background-position: -24px 0; }
+    &.search:before { background-position: -48px 0; }
+    &.envelope:before { background-position: -72px 0; }
+    &.heart:before { background-position: -96px 0; }
+    &.star:before { background-position: -120px 0; }
+    &.star-empty:before { background-position: -144px 0; }
+    &.user:before { background-position: -168px 0; }
+    &.film:before { background-position: -192px 0; }
+    &.th-large:before { background-position: -216px 0; }
+    &.th:before { background-position: -240px 0; }
+    &.th-list:before { background-position: -264px 0; }
+    &.ok:before { background-position: -288px 0; }
+    &.remove:before { background-position: -312px 0; }
+    &.zoom-in:before { background-position: -336px 0; }
+    &.zoom-out:before { background-position: -360px 0; }
+    &.off:before { background-position: -384px 0; }
+    &.signal:before { background-position: -408px 0; }
+    &.cog:before { background-position: -432px 0; }
+    &.trash:before { background-position: -456px 0; }
+    &.home:before { background-position: 0 -24px; }
+    &.file:before { background-position: -24px -24px; }
+    &.time:before { background-position: -48px -24px; }
+    &.road:before { background-position: -72px -24px; }
+    &.download-alt:before { background-position: -96px -24px; }
+    &.download:before { background-position: -120px -24px; }
+    &.upload:before { background-position: -144px -24px; }
+    &.inbox:before { background-position: -168px -24px; }
+    &.play-circle:before { background-position: -192px -24px; }
+    &.repeat:before { background-position: -216px -24px; }
+    &.refresh:before { background-position: -240px -24px; }
+    &.list-alt:before { background-position: -264px -24px; }
+    &.lock:before { background-position: -287px -24px; }
+    &.flag:before { background-position: -312px -24px; }
+    &.headphones:before { background-position: -336px -24px; }
+    &.volume-off:before { background-position: -360px -24px; }
+    &.volume-down:before { background-position: -384px -24px; }
+    &.volume-up:before { background-position: -408px -24px; }
+    &.qrcode:before { background-position: -432px -24px; }
+    &.barcode:before { background-position: -456px -24px; }
+    &.tag:before { background-position: 0 -48px; }
+    &.tags:before { background-position: -25px -48px; }
+    &.book:before { background-position: -48px -48px; }
+    &.bookmark:before { background-position: -72px -48px; }
+    &.print:before { background-position: -96px -48px; }
+    &.camera:before { background-position: -120px -48px; }
+    &.font:before { background-position: -144px -48px; }
+    &.bold:before { background-position: -167px -48px; }
+    &.italic:before { background-position: -192px -48px; }
+    &.text-height:before { background-position: -216px -48px; }
+    &.text-width:before { background-position: -240px -48px; }
+    &.align-left:before { background-position: -264px -48px; }
+    &.align-center:before { background-position: -288px -48px; }
+    &.align-right:before { background-position: -312px -48px; }
+    &.align-justify:before { background-position: -336px -48px; }
+    &.list:before { background-position: -360px -48px; }
+    &.indent-left:before { background-position: -384px -48px; }
+    &.indent-right:before { background-position: -408px -48px; }
+    &.facetime-video:before { background-position: -432px -48px; }
+    &.picture:before { background-position: -456px -48px; }
+    &.pencil:before { background-position: 0 -72px; }
+    &.map-marker:before { background-position: -24px -72px; }
+    &.adjust:before { background-position: -48px -72px; }
+    &.tint:before { background-position: -72px -72px; }
+    &.edit:before { background-position: -96px -72px; }
+    &.share:before { background-position: -120px -72px; }
+    &.check:before { background-position: -144px -72px; }
+    &.move:before { background-position: -168px -72px; }
+    &.step-backward:before { background-position: -192px -72px; }
+    &.fast-backward:before { background-position: -216px -72px; }
+    &.backward:before { background-position: -240px -72px; }
+    &.play:before { background-position: -264px -72px; }
+    &.pause:before { background-position: -288px -72px; }
+    &.stop:before { background-position: -312px -72px; }
+    &.forward:before { background-position: -336px -72px; }
+    &.fast-forward:before { background-position: -360px -72px; }
+    &.step-forward:before { background-position: -384px -72px; }
+    &.eject:before { background-position: -408px -72px; }
+    &.chevron-left:before { background-position: -432px -72px; }
+    &.chevron-right:before { background-position: -456px -72px; }
+    &.plus-sign:before { background-position: 0 -96px; }
+    &.minus-sign:before { background-position: -24px -96px; }
+    &.remove-sign:before { background-position: -48px -96px; }
+    &.ok-sign:before { background-position: -72px -96px; }
+    &.question-sign:before { background-position: -96px -96px; }
+    &.info-sign:before { background-position: -120px -96px; }
+    &.screenshot:before { background-position: -144px -96px; }
+    &.remove-circle:before { background-position: -168px -96px; }
+    &.ok-circle:before { background-position: -192px -96px; }
+    &.ban-circle:before { background-position: -216px -96px; }
+    &.arrow-left:before { background-position: -240px -96px; }
+    &.arrow-right:before { background-position: -264px -96px; }
+    &.arrow-up:before { background-position: -289px -96px; }
+    &.arrow-down:before { background-position: -312px -96px; }
+    &.share-alt:before { background-position: -336px -96px; }
+    &.resize-full:before { background-position: -360px -96px; }
+    &.resize-small:before { background-position: -384px -96px; }
+    &.plus:before { background-position: -408px -96px; }
+    &.minus:before { background-position: -433px -96px; }
+    &.asterisk:before { background-position: -456px -96px; }
+    &.exclamation-sign:before { background-position: 0 -120px; }
+    &.gift:before { background-position: -24px -120px; }
+    &.leaf:before { background-position: -48px -120px; }
+    &.fire:before { background-position: -72px -120px; }
+    &.eye-open:before { background-position: -96px -120px; }
+    &.eye-close:before { background-position: -120px -120px; }
+    &.warning-sign:before { background-position: -144px -120px; }
+    &.plane:before { background-position: -168px -120px; }
+    &.calendar:before { background-position: -192px -120px; }
+    &.random:before { background-position: -216px -120px; }
+    &.comment:before { background-position: -240px -120px; }
+    &.magnet:before { background-position: -264px -120px; }
+    &.chevron-up:before { background-position: -288px -120px; }
+    &.chevron-down:before { background-position: -313px -119px; }
+    &.retweet:before { background-position: -336px -120px; }
+    &.shopping-cart:before { background-position: -360px -120px; }
+    &.folder-close:before { background-position: -384px -120px; }
+    &.folder-open:before { background-position: -408px -120px; }
+    &.resize-vertical:before { background-position: -432px -119px; }
+    &.resize-horizontal:before { background-position: -456px -118px; }
+    &.hdd:before { background-position: 0 -144px; }
+    &.bullhorn:before { background-position: -24px -144px; }
+    &.bell:before { background-position: -48px -144px; }
+    &.certificate:before { background-position: -72px -144px; }
+    &.thumbs-up:before { background-position: -96px -144px; }
+    &.thumbs-down:before { background-position: -120px -144px; }
+    &.hand-right:before { background-position: -144px -144px; }
+    &.hand-left:before { background-position: -168px -144px; }
+    &.hand-up:before { background-position: -192px -144px; }
+    &.hand-down:before { background-position: -216px -144px; }
+    &.circle-arrow-right:before { background-position: -240px -144px; }
+    &.circle-arrow-left:before { background-position: -264px -144px; }
+    &.circle-arrow-up:before { background-position: -288px -144px; }
+    &.circle-arrow-down:before { background-position: -312px -144px; }
+    &.globe:before { background-position: -336px -144px; }
+    &.wrench:before { background-position: -360px -144px; }
+    &.tasks:before { background-position: -384px -144px; }
+    &.filter:before { background-position: -408px -144px; }
+    &.briefcase:before { background-position: -432px -144px; }
+    &.fullscreen:before { background-position: -456px -144px; }
+  }
+
+  &.large {
+    padding: 5px 12px;
+    font-size: 12px;
+    line-height: 20px;
+    &.icon { &:before { top: 3px; } }
+  }
+
+  &.inline {    // match height of input fields
+    padding: 3px 12px;
+    font-size: 12px;
+    line-height: 16px;
+    &.icon { &:before { top: 2px; } }
+  }
+
+  &.small {
+    padding: 2px 12px;
+    font-size: 11px;
+    line-height: 16px;
+    &.icon { &:before { top: 1px; } }
+  }
+
+//                                  $bg1,    $bg2,    $border, $text,   $bg1_hv, $bg2_hv, $border_hv, $text_hv
+  @include button_colors("",        #ededed, #D9D9D9, #D4D4D4, #333333, #4E90B2, #64ABCA, #64ABCA,    #fcfcfc);
+  @include button_colors(".green",  #7BAA22, #7BAA22, #7BAA22, #ffffff, #557E17, #7BAA22, #7BAA22,    #ffffff);
+  @include button_colors(".blue",   #64ABCA, #4E90B2, #64ABCA, #ffffff, #4E90B2, #64ABCA, #64ABCA,    #ffffff);
+  @include button_colors(".danger", #ededed, #D9D9D9, #D4D4D4, #333333, #b33630, #dc5f59, #b53f3a,    #ffffff);
+  @include button_colors(".silver",  #e8e8e8, #D9D9D9, #D4D4D4, #333333, #D9D9D9, #e8e8e8, #D4D4D4,   #333333);
+}
+
+// group of side-by-side buttons
+.button_group {
+  font-size: 0px;   // so line-breaks don't add space between buttons
+
+  .button {
+    margin-right: $button_gutter;
+    &:last-child { margin-right: 0; }
+  }
+}
+
+// tweak size of inline buttons so they exactly match the height of input fields
+.agent_firefox .button.inline { line-height: 17px; }
+.agent_windows.agent_chrome .button.inline { line-height: 17px; }
+.agent_ie8 .button.inline { line-height: 17px; }

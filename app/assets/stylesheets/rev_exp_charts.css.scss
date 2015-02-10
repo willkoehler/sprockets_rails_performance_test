@@ -1,0 +1,170 @@
+//= depend_on_asset "eye@2x.png"
+//= depend_on_asset "grip@2x.png"
+//= depend_on_asset "grip_hover@2x.png"
+@import "core/globals";
+
+.rev_exp_charts {
+  .eye_icon {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    background: image-url('eye@2x.png') no-repeat;
+    background-size: cover;
+    opacity: .5;
+  }
+
+  p.summary { margin-bottom: 14px; }  // reduce margin because .controls needs top padding
+
+  .tools {
+    background-color: #fff;
+    padding: 10px 0 10px 0;
+    background: white;
+    border-bottom: 1px solid $border_color;
+    @include close_over_floated_elements;   // (overflow: hidden breaks disaplay: sticky)
+  }
+
+  .rev_exp_chart {
+    position: relative;
+
+    // Highcharts replaces the contents of the container div. We need this
+    // extra container to prevent Highcharts from removing the eye icon
+    .chart_container {
+      height: 100%;
+      width: 100%;
+    }
+    .no_data {
+      padding-top: 20px;
+      font-size: 14px;
+      text-align: center;
+      color: $light_text_color;
+    }
+  }
+
+  // large version of chart for show/edit/new pages
+  &.show, &.edit, &.new {
+    .rev_exp_chart {
+      margin: $small_space 0;
+      width: 100%;
+      height: 530px;
+
+      .eye_icon {
+        position: absolute;
+        top: 8px;
+        right: 15px;
+      }
+      .grip { display: none; }
+    }
+    
+    form {
+      .category_header {
+        float: left;
+        border-bottom: 1px solid $border_color;
+        padding-left: 2px;
+        width: 90%;
+        
+        a { font-weight: normal; }
+      }
+      .actions { margin-left: 0px; }
+    }
+  }
+
+  &.index {
+    .subnav {
+      a {
+        min-width: 190px;
+        padding: 9px 20px;
+        height: auto;
+      }
+    }
+  
+    .search_form {
+      position: relative;
+      top: -1px;  // vertically align with "+ Add Chart" button
+      font-size: 14px;
+
+      .eye_icon {
+        position: relative;
+        top: 4px;
+      }
+    }
+  
+    #rev_exp_charts {
+      margin-right: -$small_space;
+      margin-top: $small_space;
+      overflow: hidden;
+    
+      a {
+        float: left;
+        text-decoration: none;
+        margin: 0 $small_space $small_space 0;
+      }
+    
+      .rev_exp_chart {
+        display: block;
+        border-radius: 5px;
+        border: 1px solid $border_color;
+        width: ($content_width - $small_space - 1px) / 2;
+        height: 260px;
+        background: #FFF;
+      
+        .eye_icon {
+          position: absolute;
+          top: 8px;
+          right: 6px;
+        }
+
+        .grip {
+          position: absolute;
+          top: 2px;
+          left: 6px;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          background: image-url('grip@2x.png') no-repeat;
+          background-size: cover;
+          &:hover {
+            cursor: move;
+            background-image: image-url('grip_hover@2x.png');
+          }
+        }
+      }
+    }
+  }
+}
+
+// IE8 specific fixes
+.agent_ie.agent_ie8.rev_exp_charts {
+  #download_chart_btn {
+    display: none;
+  }
+  
+  .eye_icon {
+    background: none;
+    filter: alpha(opacity=50) progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{image_path('eye@2x.png')}', sizingMethod='scale');
+  }
+  
+  #rev_exp_charts {
+    .rev_exp_chart {
+      .grip {
+        background: #FFF;
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{image_path('grip@2x.png')}', sizingMethod='scale');
+        &:hover {
+          filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{image_path('grip_hover@2x.png')}', sizingMethod='scale');
+        }
+      }
+    }
+  }
+}
+
+// Mac-specific fixes
+.agent_mac.rev_exp_charts {
+  &.show, &.edit, &.new {
+    form {
+      .category_header {
+        position: relative;
+        top: -1px;
+      }
+    }
+  }
+  
+}

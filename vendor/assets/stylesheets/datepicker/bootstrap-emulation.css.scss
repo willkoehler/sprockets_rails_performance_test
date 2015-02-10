@@ -1,0 +1,71 @@
+// Emulate Twitter Bootstrap styles used by the datepicker. Styles are scoped to
+// .datepicker so they will not effect the rest of the page.
+
+.datepicker {
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  &.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 4px;                 // (changed from 5px 0 to match datepicker.css)
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+    -webkit-border-radius: 5px;   // (changed from 6px to match datepicker.css)
+       -moz-border-radius: 5px;   // (changed from 6px to match datepicker.css)
+            border-radius: 5px;   // (changed from 6px to match datepicker.css)
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;
+  }
+
+  table {
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .table-condensed th,
+  .table-condensed td {
+    padding: 4px 5px;
+    // WCK: increase size of prev/next arrows
+    &.prev, &.next {
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 3px 5px 5px 5px;   // raise arrow slightly to center it
+    }
+  }
+  
+  // WCK: undo some styles we apply in table.css
+  th {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: bold;
+    border: none;
+    text-transform: none;
+    background: transparent;
+  }
+  td {
+    font-size: 13px;
+    line-height: 18px;
+    border: none;
+  }
+
+}

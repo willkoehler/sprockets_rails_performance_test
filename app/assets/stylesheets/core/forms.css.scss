@@ -1,0 +1,50 @@
+@import "globals";
+// Form input styling shared by simple_form and search_form
+// Moving select element styling here because it's used outside these forms as well
+// (on edit summary page for example)
+
+select {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border: 1px solid $input_border_color;
+  margin: 0px;
+  height: 24px;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+// Windows-specific fixes
+.agent_windows {
+  select { height: 25px; }
+}
+
+// Firefox Windows-specific fixes
+.agent_firefox.agent_windows {
+  select { padding: 3px; }
+}
+
+// Chrome Windows-specific fixes
+.agent_chrome.agent_windows {
+  select { padding: 2px; }
+}
+
+// IE10+ specific fixes
+.agent_ie, {
+  select { height: 24px; }
+}
+
+// IE8 specific fixes
+.agent_ie.agent_ie8, {
+  select { height: auto; padding: 3px; }
+}
+
+// Mac-specfic fixes
+.agent_mac {
+  // move select box up 1px to line up with input fields
+  select { position: relative; top: -1px; }
+}
+
+// Firefox Mac-specific fixes
+.agent_firefox.agent_mac {
+  select { height: 25px; padding: 3px; top: 0px; }
+}

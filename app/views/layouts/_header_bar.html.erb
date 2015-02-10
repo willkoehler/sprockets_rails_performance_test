@@ -1,0 +1,16 @@
+<div class="header_bar">
+  <div class="container">
+    <div class="logo">
+      <%= image_tag("psiscs_logo.png", alt: "Logo", height: 25, width: 39) %>
+      <h1>
+        Pathway
+      </h1>
+    </div>
+    <div class='menu'>
+      <% if current_user %>
+        <span class="bright"><%= current_user.name %></span> - <%= current_user.entity_name %> |
+      <% end %>
+      <%= render 'layouts/header_links' %>
+    </div>
+  </div>
+</div>

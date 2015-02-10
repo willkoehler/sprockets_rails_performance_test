@@ -1,0 +1,64 @@
+@import "globals";
+
+// Wrappers
+// ----------------------------------------
+.search_form {
+  margin-bottom: $gutter;
+
+  // Labels
+  // ----------------------------------------
+  label {
+    color: $form_label_color;
+  }
+
+  .space_left { margin-left: 8px !important; }
+  .space_left_sm { margin-left: 3px !important; }
+  .space_right { margin-right: 8px }
+
+  // Inputs
+  // ----------------------------------------
+  span.inputs {
+    input[type=text], input[type=email], input[type=password], textarea, select {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      border: 1px solid $input_border_color;
+      margin: 0 3px 0 0;
+
+      &:focus {
+        border-color: $input_highlight_color;
+        box-shadow: 0 0 5px #999999;
+        background-color: $input_highlight_background;
+      }
+    }
+
+    input[type=text], input[type=email], input[type=password], textarea {
+      padding: 4px 5px;
+      outline: none;
+      border-radius: 3px;
+    }
+
+    input[type=checkbox] {
+      border: none;
+      margin-right: 5px;
+      margin-left: 2px;   // so radio buttons aren't clipped on left side
+    }
+
+    input[type=checkbox] {
+      position: relative;
+      top: -1px;          // raise checkboxes so they align with text
+    }
+  }
+}
+
+// Windows-specific fixes
+.agent_windows {
+  .search_form {
+    span.inputs {
+      // fix checkbox alignment
+      input[type=checkbox], input[type=radio] {
+        position: relative;
+        top: 2px !important;  // lower checkboxes so they align with text
+      }
+    }
+  }
+}

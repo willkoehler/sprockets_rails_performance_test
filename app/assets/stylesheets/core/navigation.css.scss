@@ -1,0 +1,149 @@
+@import "globals";
+
+div.topmenu {
+  margin: $nav_spacing auto;
+  overflow: hidden;
+  width: $page_width;
+
+  // Search Form
+  // --------------------------------------------------
+  form.search {
+    float: right;
+
+    input[type=text] {
+      vertical-align: top;
+      border: 1px solid #AAA;
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      margin: 0px;
+      padding: 8px 5px;
+      height: 32px;
+      outline: none;
+      border-radius: 3px;
+      width: 222px;
+
+      &:focus {
+        border-color: $input_highlight_color;
+        box-shadow: 0 0 5px #999999;
+        background-color: $input_highlight_background;
+      }
+    }
+
+    input.button {
+      vertical-align: top;
+      height: 32px;
+      padding: 7px 15px;
+      margin: 0 0 0 3px;
+      text-shadow: none;
+      font-weight: normal;
+    }
+  }
+  
+  &.collapse {
+    height: $nav_spacing * 2;
+    margin: 0 auto;
+  }
+}
+
+ul.nav {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+
+  // Navigation Items
+  // --------------------------------------------------
+  li {
+    float: left;
+    position: relative;
+    margin-right: $nav_spacing;
+    &.last { margin-right: 0px; }
+
+    a {
+      display: block;
+      font-size: 13px;
+      line-height: 20px;
+      height: 32px;
+      color: $nav_text_color;
+      background-color: $nav_background_color;
+      border-radius: 3px;
+      padding: 6px 10px;
+
+      .badge {
+        text-align: center;
+        font-size: 12px;
+        line-height: 20px;
+        display: inline-block;
+        position: relative;
+        padding: 0px 5px;
+        margin-left: 5px;
+        border-radius: 3px;
+        color: $nav_badge_text_color;
+        background-color: $nav_badge_background_color;
+
+        &.warn { background-color: $nav_badge_warn_background_color !important; }
+      }
+
+      &:hover, &.active
+      {
+        text-decoration: none;
+        color: $nav_highlight_text_color;
+        background-color: $nav_highlight_background_color !important;
+        
+        .badge { background-color: $nav_highlight_badge_background_color; }
+      }
+    }
+  }
+}
+
+// subnav
+.subnav {
+  margin-bottom: $small_space;
+  border-spacing: $nav_spacing 0;
+  display: inline-block;
+  @include thinner_font;
+  
+  a {
+    display: table-cell;
+    vertical-align: middle;
+    min-width: 92px;
+    height: 60px;
+    font-size: 13px;
+    line-height: 15px;
+    color: $subnav_text_color;
+    text-align: center;
+    background-color: $subnav_background_color;
+    border-radius: 6px;
+    padding: 6px 10px;
+    
+    .subtext {
+      font-size: 10px;
+      line-height: 14px;
+    }
+
+    &:hover, &.active
+    {
+      text-decoration: none;
+      color: $subnav_highlight_text_color;
+      background-color: $subnav_highlight_background_color !important;
+    }
+    &.active {
+      cursor: default;
+      pointer-events: none;       // block click events on <a> elements (not supported in IE)
+    }
+    &.narrow { min-width: 70px; }
+  }
+  
+  // overrides of subnav for admin pages
+  &.admin {
+    a {
+      width: 98px;
+      height: 47px;
+    }
+  }
+  
+  .separator {
+    display: table-cell;
+    width: 1px;
+    background: $subnav_background_color;
+  }
+}

@@ -1,0 +1,54 @@
+@import "globals";
+
+table {
+  margin-bottom: $small_space;
+  width: 100%;
+  background: $table_background_color;
+  border-spacing: 0px;        // equivalent to cellspacing=0
+}
+
+th {
+  font-size: 9px;
+  line-height: 10px;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 7px 6px;
+  background: $table_header_color;
+}
+
+td {
+  padding: 5px 6px;
+  font-size: 12px;
+  border-bottom: 1px solid $border_color;
+}
+
+// message for things like 'No items found'
+tbody tr.message td {
+  background: #FFF;
+  border: none;
+  color: $light_text_color;
+}
+
+.table_note {
+  margin-bottom: 5px;
+  color: $light_text_color;
+}
+
+// X link for deleting items in a table row (categories index)
+table a.delete {
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+table a.delete:hover {
+  color: red;
+  text-decoration: none;
+}
+
+.agent_windows {
+  th { padding: 8px 6px 7px 6px;}
+}
+
+.agent_safari {
+  th { padding: 6px 6px 8px 6px;}
+}

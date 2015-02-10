@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html data-session-timeout='<%= current_user ? SprocketsTest.config.session_timeout : 0 %>'>
+<head>
+  <title><%= page_title %></title>
+  <meta name='viewport' content='width=850' />                  <!-- set width of iPad display port -->
+  <meta name = "format-detection" content = "telephone=no" />   <!-- prevent iPad from converting numbers to linkable phone #s -->
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <!-- Block IE6/7 --><!--[if lte IE 7]><%= javascript_include_tag '/ie6warning/warning.js' %><script>$(ie6warning)</script><![endif]-->
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+  <%= google_analytics_js if Rails.env.production? %>
+</head>
+<body class='<%= body_classes %>'>
+  <%= render 'layouts/flash_message' %>
+  <%= render 'layouts/header_bar' %>
+
+  <%= render 'layouts/navigation' %>
+  <div class="page">
+    <div class="content">
+      <%= render 'shared/breadcrumbs' %>
+      <%= yield %>
+    </div>
+  </div>
+
+  <%= render 'layouts/debug' if Rails.env.development? %>
+</body>
+</html>

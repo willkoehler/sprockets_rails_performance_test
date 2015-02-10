@@ -1,0 +1,17 @@
+<% if current_user %>
+  <div class='topmenu'>
+
+    <form action="<%= landing_path %>" method="get" class="search">
+      <%= text_field_tag :find, params[:find], placeholder: search_placeholder %>
+      <%= submit_tag "Search", name: nil, class: 'button' %>
+    </form>
+
+    <ul class='nav'>
+     <li><%= link_to 'Hospitals', landing_path, class: highlight_nav_if(:hospitals), style: 'width: 110px' %></li>
+     <li><%= link_to 'Admin', landing_path, class: highlight_nav_if(:admin), style: 'width: 100px' %></li>
+    </ul>
+
+  </div>
+<% else %>
+  <div class='topmenu collapse'></div>
+<% end %>

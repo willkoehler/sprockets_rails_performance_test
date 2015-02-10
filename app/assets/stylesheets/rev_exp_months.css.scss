@@ -1,0 +1,191 @@
+@import "core/globals";
+
+$label_width: 235px;
+$column_width: 85px;
+$row_height: 25px;
+$data_width: $page_width - $label_width;
+$padding_width: $data_width - $column_width * 2;
+
+.rev_exp_months.index {
+
+  .breadcrumbs { margin-bottom: 0px; }    // margin will be created by top-padding on .content_head
+  
+  .content_head.sticky {
+    padding: 10px $page_margin 10px $page_margin;
+    margin-bottom: 0;   // jquery.sticky.js doesn't handle margins correctly
+    margin-left: -$page_margin;
+    margin-right: -$page_margin;
+    background: white;
+
+    &.stuck {
+      padding-bottom: 4px;
+      border-bottom: 1px solid $border_color;
+    }
+  }
+
+  .save_cancel {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .simple_form.confirm {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 16px;    // needed because of simple_form.css line-height: 17px
+  }
+  .simple_form .inputs .input {
+    padding: 0;
+  }
+  
+  .months {
+    margin: 0 (-$page_margin) $small_space (-$page_margin);
+    font-size: 0px;
+    white-space: nowrap;
+    
+    .labels, .data {
+      display: inline-block;
+      vertical-align: top;
+  
+      .column {
+        display: inline-block;
+        vertical-align: top;
+        background: $table_background_color;
+      
+        .cell {
+          font-size: 12px;
+          line-height: 16px;    // needed because of simple_form.css line-height: 17px
+          border-bottom: 1px solid $border_color;
+          padding: 4px 7px;
+          width: $column_width;
+          height: $row_height;
+        
+          &.header {
+            padding: 6px 7px;
+            border-top: 1px solid $border_color;
+            color: $lighten_bold_text_color;
+            height: auto;
+        
+            .year {
+              font-size: 11px;
+              margin-bottom: 6px;
+              visibility: hidden;
+            }
+            .month {
+              font-size: 17px;
+              line-height: 21px;
+              font-weight: bold;
+            }
+            .status {
+              font-size: 10px;
+            }
+          }
+        }
+
+        form {
+          input[type=text] {
+            width: 100%;
+            height: $row_height + 1px;
+            border-radius: 0px;
+            position: relative;
+            top: -1px;
+            border: 1px solid $input_highlight_color;
+            margin: 0px;
+            padding: 4px 6px;
+            outline: none;
+          }
+        
+          input:focus { background-color: $input_highlight_background; }
+        }
+
+        &.incomplete, &.missing, &.pending {
+          .header {
+            .month, .status { color: $link_color; }
+          }
+        }
+        
+        &.editable {
+          cursor: pointer;
+        }
+        
+        &.Jan, &.Dec, &:nth-last-child(2) {
+          .header {
+            .year { visibility: visible; }
+          }
+        }
+        
+        &.with_form {
+          form { .cell { padding: 0; } }
+
+          .header {
+            background: $subnav_highlight_background_color;
+            .year, .month, .status { color: #FFF; }
+          }
+        }
+      }
+    }
+  
+    .data {
+      width: $data_width;
+      overflow-x: scroll;
+      overflow-y: hidden;
+
+      .column:hover {
+        background: lighten($table_background_color, 3%);
+      }
+      
+      .padding {
+        display: inline-block;
+        width: $padding_width;
+      }
+    }
+  
+    .labels {
+      .column {
+        .cell, .cell.header {
+          color: $lighten_bold_text_color;
+          border-right: 3px solid $border_color;
+          width: $label_width;
+          
+          &.group {
+            font-weight: bold;
+            color: $lighten_bold_text_color;
+          }
+        }
+      }
+    }
+  }
+
+  .show_in_view_mode { display: block; }
+  .show_in_edit_mode { display: none; }
+  
+  &.edit_mode {
+    .show_in_view_mode { display: none; }
+    .show_in_edit_mode { display: block; }
+    .months .data .column.editable { cursor: auto; }
+
+    .data {
+      .column:hover {
+        background: $table_background_color;
+      }
+    }
+  }
+}
+
+// IE8 specific fixes
+.agent_ie.agent_ie8.rev_exp_months.index {
+  .save_cancel {
+    // work-around for missing :last-child support in IE8
+    margin-right: -$button_gutter;
+  }
+  .months {
+    .data {
+      .column {
+        &.Jan, &.Dec {    // (same as above without nth-last-child)
+          .header {
+            .year { visibility: visible; }
+          }
+        }
+      }
+    }
+  }
+}

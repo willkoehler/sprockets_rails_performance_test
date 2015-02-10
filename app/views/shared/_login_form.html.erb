@@ -1,0 +1,27 @@
+<% page_title 'Login' %>
+<% @disable_header_flash = true %>
+
+<div class='login_box'>
+  <div class='title'>Sign In</div>
+  <div class='body'>
+    <% flash.to_hash.except!('timedout').each do |key, value| %>  <%# to_hash.except! -> see https://github.com/plataformatec/devise/issues/1777 %>
+      <div class="inline_flash <%= key %>"><%= value %></div>
+    <% end %>
+    <%= image_tag('padlock.png', style: 'float:right; margin:12px 33px 0 0;') %>
+
+    <%= simple_form_for User.new, url: user_session_path, html: { class: 'float-left', style: 'width:380px' },
+                                  defaults: { required: false, wrapper_html: { class: 'medtext' } } do |f| %>
+      <div class="inputs">
+        <%= f.input :email, autofocus: cookies[:login_email].blank?, input_html: { value: cookies[:login_email], class: 'width-6', :type => :email } %>
+        <%= f.input :password, autofocus: cookies[:login_email].present?, input_html: { class: 'width-6' } %>
+        <div class='input field_align'>
+          <%= link_to "Forgot your password?", root_path %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.button :submit, "Sign in", data: { disable_with: 'Signing in...' } %>
+      </div>
+    <% end %>
+  </div>
+</div>

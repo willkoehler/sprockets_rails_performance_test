@@ -1,0 +1,11 @@
+/*
+ * Require normalize separately so it's included first
+ *= require core/normalize
+ *= require_directory ./core
+ *
+ *= require datepicker/datepicker
+ *= require datepicker/bootstrap-emulation
+ *
+ *= require_directory .
+ *= require_self
+ */

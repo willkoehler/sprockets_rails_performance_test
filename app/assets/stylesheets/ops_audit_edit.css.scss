@@ -1,0 +1,108 @@
+@import "core/globals";
+
+.ops_audit_audits.edit, .ops_audit_audits.edit_status {
+
+  .breadcrumbs { margin-bottom: 0px; }    // margin will be created by top-padding on .content_head
+  
+  .content_head.sticky {
+    padding: 10px 0 10px 0;
+    margin-bottom: 0;   // jquery.sticky.js doesn't handle margins correctly
+    background: white;
+    border-bottom: 1px solid $border_color;
+    
+    &.stuck {
+      padding-bottom: 4px;
+      #audit_summary_button { display: inline-block; }
+    }
+  }
+  
+  .category {
+    h2 { margin-bottom: 12px; }
+  }
+
+  .ops_audit_standard {
+    overflow: hidden;
+    padding: 15px 80px;
+    border-top: 3px solid $border_color;
+    background: #FFF;
+    
+    &:last-child { margin-bottom: 25px; }
+    
+    .summary {
+      font-weight: bold;
+      font-size: 14px;
+      color: $lighten_bold_text_color;
+    }
+    .details { margin-top: 5px; color: $light_text_color; }
+
+    textarea { width: 100%; }
+    label .active_label { color: $active_goal_text_color; }
+
+    .levels {
+      margin: 15px 0;
+
+      .level {
+        overflow: hidden;
+        padding: 5px 0;
+        border-top: 1px solid $border_color;
+        cursor: default;
+          
+        .f_column {
+          float: left;
+    
+          &.left { width: 35px; text-align: center; }
+    
+          &.middle {
+            width: 490px;
+            .summary { font-weight: normal; color: $default_text_color; }
+            .details { margin-top: 0px; }
+          }
+    
+          &.right { width: 85px; text-align: center; color: $light_text_color; }
+        }
+        
+        &.active {
+          background-color: $background_highlight_green;
+        }
+    
+        &.selected {
+          background-color: $background_highlight_blue;
+          .column.middle .summary { font-weight: bold; }
+        }
+      }
+    }
+  }
+}
+
+// Windows-specific fixes
+.agent_windows {
+  &.audits.edit, &.audits.edit_status {
+    // lower radio buttons to align with summary text
+    input[type=radio] {
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+// IE8 specific fixes
+.agent_ie.agent_ie8, {
+  &.audits.edit, &.audits.edit_status {
+    // lower radio buttons to align with summary text
+    input[type=radio] {
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+// Firefox Windows-specific fixes
+.agent_firefox.agent_windows {
+  &.audits.edit, &.audits.edit_status {
+    // lower radio buttons to align with summary text
+    input[type=radio] {
+      position: relative;
+      top: 2px;
+    }
+  }
+}
